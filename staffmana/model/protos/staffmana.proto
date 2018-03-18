@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package Staffmanarpc;
+
+service staffmana{
+    rpc AddStaff(AddStaffReq) returns (AddStaffResp);
+    rpc DelStaff(DelStaffReq) returns (DelStaffResp);
+    rpc UpdateStaff(UpdateStaffReq) returns (UpdateStaffResp);
+    rpc SelectAllStaff(SelectAllStaffReq) returns (SelectAllStaffResp);
+    rpc SelectStaffById(SelectStaffByIdReq) returns (SelectStaffByIdResp);
+}
+
+message AddStaffReq {
+    string name = 1;
+    string passwd = 2;
+    int64 position = 3;
+}
+
+message AddStaffResp {
+    bool Success =1;
+}
+
+message DelStaffReq {
+    int64 id = 1;
+}
+
+message DelStaffResp {
+    bool Success = 1;
+}
+
+message UpdateStaffReq {
+    int64 id = 1;
+    string name = 2;
+    string passwd = 3;
+    int64 position = 4;
+}
+
+message UpdateStaffResp {
+    bool Success = 1;
+}
+
+message SelectAllStaffReq {
+}
+
+message SelectAllStaffResp {
+    bytes Payload = 1;
+}
+
+message SelectStaffByIdReq {
+    int64 id = 1;
+}
+
+message SelectStaffByIdResp {
+    bytes Payload = 1;
+}

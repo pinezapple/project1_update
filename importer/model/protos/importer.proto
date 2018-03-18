@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package Importerrpc;
+
+service importer{
+    rpc AddDI(AddDIReq) returns (AddDIResp);
+    rpc DelDI(DelDIReq) returns (DelDIResp);
+    rpc UpdateDI(UpdateDIReq) returns (UpdateDIResp);
+    rpc SelectAllDI(SelectAllDIReq) returns (SelectAllDIResp);
+    rpc SelectByIDDI(SelectByIDDIReq) returns (SelectByIDDIResp);
+    rpc SelectByCreatedAtDI(SelectByCreatedAtDIReq) returns (SelectByCreatedAtDIResp);
+}
+
+message AddDIReq {
+    string created_by = 1;
+    bytes good_list = 2;
+    bytes good_list_amount = 3;
+    int64 total_money = 4;
+}
+
+message AddDIResp {
+    bool Success = 1;
+}
+
+message DelDIReq {
+    int64 id = 1;
+}
+
+message DelDIResp {
+    bool Success = 1;
+}
+
+message UpdateDIReq {
+    int64 id = 1;
+    string created_by = 2;
+    bytes good_list = 3;
+    bytes good_list_amount = 4;
+    int64 total_money = 5;
+}
+
+message UpdateDIResp {
+    bool Success = 1;
+}
+
+message SelectAllDIReq {
+}
+
+message SelectAllDIResp {
+    bytes Payload = 1;
+}
+
+message SelectByIDDIReq {
+    int64 id = 1;
+}
+
+message SelectByIDDIResp {
+    bytes Payload = 1;
+}
+
+message SelectByCreatedAtDIReq {
+    int64 from_time = 1;
+    int64 to_time = 2;
+}
+
+message SelectByCreatedAtDIResp {
+    bytes Payload = 1;
+}

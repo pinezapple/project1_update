@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package Authenrpc;
+
+service Authen {
+    rpc AuthenAndClasify(AuthenAndClasifyReq) returns (AuthenAndClasifyResp);
+    rpc AddHour(AddHourReq) returns (AddHourResp);
+    rpc SelectAllHour(SelectAllHourReq) returns (SelectAllHourResp);
+    rpc SelectHourByStaffID(SelectHourByStaffIDReq) returns (SelectHourByStaffIDResp);
+}
+
+message AuthenAndClasifyReq {
+    int64 staffid = 1;
+    string passwd = 2;
+    int64 position = 3;
+}
+
+message AuthenAndClasifyResp {
+    bool ok = 1;
+}
+
+message AddHourReq {
+    int64 id = 1;
+    int64 staffid = 2;
+    int64 in = 3;
+    int64 out = 4;
+}
+
+message AddHourResp {
+    bool Success = 1;
+}
+
+message SelectAllHourReq {
+}
+
+message SelectAllHourResp {
+    bytes Payload = 1;
+}
+
+message SelectHourByStaffIDReq {
+    int64 staffid = 1;
+}
+
+message SelectHourByStaffIDResp {
+    bytes Payload = 1;
+}

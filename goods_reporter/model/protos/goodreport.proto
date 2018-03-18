@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package Goodreportrpc;
+
+service goodreport {
+    rpc IfGoodExist(IfGoodExistReq) returns (IfGoodExistResp);
+    rpc SelectAllGood(SelectAllGoodReq) returns (SelectAllGoodResp);
+    rpc SelectGoodById(SelectGoodByIdReq) returns (SelectGoodByIdResp);
+    rpc SelectGoodByName(SelectGoodByNameReq) returns (SelectGoodByNameResp);
+    rpc SelectGoodByPrice(SelectGoodByPriceReq) returns (SelectGoodByPriceResp);
+}
+
+message IfGoodExistReq {
+    int64 id = 1;
+}
+
+message IfGoodExistResp {
+    bool ok = 1;
+}
+
+message SelectAllGoodReq {
+}
+
+message SelectAllGoodResp {
+    bytes Payload = 1;
+}
+
+message SelectGoodByIdReq {
+    int64 id = 1;
+}
+
+message SelectGoodByIdResp {
+    bytes Payload = 1;
+}
+
+message SelectGoodByNameReq {
+    string name = 1;
+}
+
+message SelectGoodByNameResp {
+    bytes Payload = 1;
+}
+
+message SelectGoodByPriceReq {
+    int64 price = 1;
+}
+
+message SelectGoodByPriceResp {
+    bytes Payload = 1;
+}

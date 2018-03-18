@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package GoodsDBrpc;
+
+service goods {
+    rpc AddGoods(AddReq) returns (AddResp);
+    rpc UpdateGoods(UpdateReq) returns (UpdateResp);
+    rpc DelGoods(DelReq) returns (DelResp);
+    rpc SelectAllGoods(SelectAllReq) returns (SelectAllResp);
+    rpc SelectByGoodsID(SelectByIDReq) returns (SelectByIDResp);
+    rpc SelectByGoodsName(SelectByNameReq) returns (SelectByNameResp);
+    rpc SelectByGoodsPrice(SelectByGoodsPriceReq) returns (SelectByGoodsPriceResp);
+    rpc IfGoodsExist(IfExistReq) returns (IfExistResp);
+}
+
+message AddReq {
+    string name = 1;
+    int64 quantity = 2;
+    int64 price = 3;
+}
+
+message AddResp {
+    bool Success = 1;
+}
+
+message UpdateReq {
+    int64 id = 1;
+    string name = 2;
+    int64 quantity = 3;
+    int64 price = 4;
+}
+
+message UpdateResp {
+    bool Success = 1;
+}
+
+message DelReq {
+    int64 id = 1;
+}
+
+message DelResp {
+    bool Success = 1;
+}
+
+message SelectAllReq {
+}
+
+message SelectAllResp {
+    bytes Payload = 1;
+}
+
+message SelectByIDReq {
+    int64 id = 1;
+}
+
+message SelectByIDResp {
+    bytes Payload = 1;
+}
+
+message SelectByNameReq {
+    string name = 1;
+}
+
+message SelectByNameResp {
+    bytes Payload = 1;
+}
+
+message SelectByGoodsPriceReq {
+    int64 price = 1;
+}
+
+message SelectByGoodsPriceResp{
+    bytes Payload = 1;
+}
+
+message IfExistReq {
+    int64 id = 1;
+}
+
+message IfExistResp {
+    bool Success = 1;
+}
+

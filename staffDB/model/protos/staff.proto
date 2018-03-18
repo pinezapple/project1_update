@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package StaffDBrpc;
+
+service staff {
+    rpc AddStaff(AddReq) returns (AddResp);
+    rpc UpdateStaff(UpdateReq) returns (UpdateResp);
+    rpc DelStaff(DelReq) returns (DelResp);
+    rpc IfStaffExist(IfExistReq) returns (IfExistResp);
+    rpc SelectAllStaff(SelectAllReq) returns (SelectAllResp);
+    rpc SelectByStaffID(SelectByIDReq) returns (SelectByIDResp);
+}
+
+message AddReq {
+    int64 id = 1;
+    string name = 2;
+    string passwd = 3;
+    int64 position = 4; 
+}
+
+message AddResp {
+    bool Success = 1;
+}
+
+message UpdateReq {
+    int64 id = 1;
+    string name = 2;
+    string passwd = 3;
+    int64 position = 4;  
+}
+
+message UpdateResp{
+    bool Success = 1;
+}
+
+message DelReq {
+    int64 id = 1;
+}
+
+message DelResp {
+    bool Success = 1;
+}
+
+message IfExistReq{
+    int64 id = 1;
+}
+
+message IfExistResp{
+    bool ok = 1;
+}
+
+message SelectAllReq {
+}
+
+message SelectAllResp {
+    bytes payload = 1;
+}
+
+message SelectByIDReq {
+    int64 id = 1;
+}
+
+message SelectByIDResp {
+    bytes payload = 1;
+}
+

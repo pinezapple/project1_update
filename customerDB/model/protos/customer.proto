@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+package CustomerDBrpc;
+
+service customer {
+    rpc AddCus(AddReq) returns (AddResp);
+    rpc UpdateCus(UpdateReq) returns (UpdateResp);
+    rpc DelCus(DelReq) returns (DelResp);
+    rpc IfCusExist(CusExistReq) returns (CusExistResp);
+    rpc AddToCusBalance(AddToBalanceReq) returns (AddToBalanceResp);
+    rpc SelectAllCus(SelectAllReq) returns (SelectAllResp);
+    rpc SelectByCusID(SelectByIDReq) returns (SelectByIDResp);
+    rpc SelectByCusName(SelectByNameReq) returns (SelectByNameResp);
+    rpc SelectByCusPhoneNum(SelectByPhoneNumReq) returns (SelectByPhoneNumResp);
+}
+
+message AddReq {
+    int64 id = 1;
+    string name = 2;
+    string phonenum = 3;
+    int64 balance = 4;
+    int32 level = 5;  
+}
+
+message AddResp {
+    bool Success = 1;
+}
+
+message UpdateReq {
+    int64 id = 1;
+    string name = 2;
+    string phonenum = 3;
+    int64 balance = 4;
+    int32 level = 5;  
+}
+
+message UpdateResp{
+    bool Success = 1;
+}
+
+message DelReq {
+    int64 id = 1;
+}
+
+message DelResp {
+    bool Success = 1;
+}
+
+message CusExistReq{
+    int64 id = 1;
+}
+
+message CusExistResp{
+    bool ok = 1;
+}
+message AddToBalanceReq{
+    int64 id = 1;
+    int64 amount = 2;
+}
+
+message AddToBalanceResp {
+    bool Success = 1;
+}
+
+message SelectAllReq {
+}
+
+message SelectAllResp {
+    bytes payload = 1;
+}
+
+message SelectByIDReq {
+    int64 id = 1;
+}
+
+message SelectByIDResp {
+    bytes payload = 1;
+}
+
+message SelectByNameReq {
+    string name = 1;
+}
+
+message SelectByNameResp {
+    bytes payload = 1;
+}
+
+message SelectByPhoneNumReq {
+    string phonenum = 1;
+}
+
+message SelectByPhoneNumResp {
+    bytes payload = 1;
+}
+

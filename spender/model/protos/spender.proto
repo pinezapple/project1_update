@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package Spenderrpc;
+
+service spender{
+    rpc AddDSp(AddDSpReq) returns (AddDSpResp);
+    rpc DelDSp(DelDSpReq) returns (DelDSpResp);
+    rpc UpdateDSp(UpdateDSpReq) returns (UpdateDSpResp);
+    rpc SelectAllDSp(SelectAllDSpReq) returns (SelectAllDSpResp);
+    rpc SelectByIDDSp(SelectByIDDSpReq) returns (SelectByIDDSpResp);
+    rpc SelectByCreatedAtDSp(SelectByCreatedAtDSpReq) returns (SelectByCreatedAtDSpResp);
+}
+
+message AddDSpReq {
+    string created_by = 1;
+    string reason = 2;
+    int64 total_money = 3;
+}
+
+message AddDSpResp {
+    bool Success = 1;
+}
+
+message DelDSpReq {
+    int64 id = 1;
+}
+
+message DelDSpResp {
+    bool Success = 1;
+}
+
+message UpdateDSpReq {
+    int64 id = 1; 
+    string created_by = 2;
+    string reason = 3;
+    int64 total_money = 4;
+}
+
+message UpdateDSpResp {
+    bool Success = 1;
+}
+
+message SelectAllDSpReq {
+}
+
+message SelectAllDSpResp {
+    bytes Payload = 1;
+}
+
+message SelectByIDDSpReq {
+    int64 id = 1;
+}
+
+message SelectByIDDSpResp {
+    bytes Payload = 1;
+}
+
+message SelectByCreatedAtDSpReq {
+    int64 from_time = 1;
+    int64 to_time = 2;
+}
+
+message SelectByCreatedAtDSpResp {
+    bytes Payload = 1;
+}

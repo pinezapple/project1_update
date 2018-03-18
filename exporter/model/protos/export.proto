@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package Exportrpc;
+
+service exporter{
+    rpc AddDE(AddDEReq) returns (AddDEResp);
+    rpc DelDE(DelDEReq) returns (DelDEResp);
+    rpc UpdateDE(UpdateDEReq) returns (UpdateDEResp);
+    rpc SelectAllDE(SelectAllDEReq) returns (SelectAllDEResp);
+    rpc SelectByIDDE(SelectByIDDEReq) returns (SelectByIDDEResp);
+    rpc SelectByCreatedAtDE(SelectByCreatedAtDEReq) returns (SelectByCreatedAtDEResp);   
+}
+
+message AddDEReq {
+    string created_by = 1;
+    string reason = 2;
+    bytes good_list = 3;
+    bytes good_list_amount = 4;
+    int64 total_money = 5;
+}
+
+message AddDEResp {
+    bool Success = 1;
+}
+
+message DelDEReq {
+    int64 id = 1;
+}
+
+message DelDEResp {
+    bool Success = 1;
+}
+
+message UpdateDEReq {
+    int64 id = 1;
+    string created_by = 2;
+    string reason = 3;
+    bytes good_list = 4;
+    bytes good_list_amount = 5;
+    int64 total_money = 6;
+}
+
+message UpdateDEResp {
+    bool Success = 1;
+}
+
+message SelectAllDEReq {
+}
+
+message SelectAllDEResp {
+    bytes Payload = 1;
+}
+
+message SelectByIDDEReq {
+    int64 id = 1;
+}
+
+message SelectByIDDEResp {
+    bytes Payload = 1;
+}
+
+message SelectByCreatedAtDEReq {
+    int64 from_time = 1;
+    int64 to_time = 2;
+}
+
+message SelectByCreatedAtDEResp {
+    bytes Payload = 1;
+}
